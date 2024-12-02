@@ -107,73 +107,73 @@ Some noteworthy observations regarding this second example:
 
 | Element     | Corresponding PlantUML procedure | Example Code |
 | ----------- | -------------------------------- | ------------ |
-| ![Role](common/role.drawio.png)     | `ADFRole($id, $name)` | `ADFRole(u, "User")` |
-| ![External System](sw@rt/system.drawio.png)  | `ADFSystem($id, $name, $shade = 1)`, optional shade parameter in range {0, 1, 2, 3} with 1 being the default background color shade. | `ADFExternalSystem(b, "Backend")`, `ADFSystem(b, "Backend", 2)` |
-| ![External System](sw@rt/system.drawio.png)  | `ADFExternalSystem($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFExternalSystem(iam, "IAM")`, `ADFExternalSystem(iam, "IAM", 2)` |
-| ![Layer](sw@rt/layer.drawio.png)  | `ADFLayer($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFLayer(ld, "Data Layer")` (layer has no inside elements, hence, the label is inside the main layer box), `ADFLayer(ld, "Data Layer") {ADFComponent(r, "Repository", 2) }` with `ADFComponent(...` and `}` on a new line each (layer has an inside element, hence, the label is inside the layer label box) |
-| ![Cluster](sw@rt/cluster.drawio.png)  | `ADFCluster($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFCluster(sh, "Shopping")` (cluster has no inside elements, hence, the label is inside the main cluster box), `ADFCluster(sh, "Shopping") { ADFComponent(sc, "Shopping Cart", 2) }` (layer has an inside element, hence, the label is inside the layer label box) |
-| ![Component](sw@rt/component.drawio.png)  | `ADFComponent($id, $name, $shade = 1)`,  `shade` as in `ADFSystem` | `ADFComponent(ic, "Image Converter")`|
-| ![Interface Connector](sw@rt/interface_connector.drawio.png)  | `-0)-` or `-(0-`, direction can be added after first dash | `backend -left0)- client : "/posts endpoint"` |
-| ![Interface](sw@rt/interface.drawio.png)  | `ADFInterface($id, $name, $shade = 1)`,  `shade` as in `ADFSystem` | `ADFInterface(p, "Printer")` |
-| ![Connector](sw@rt/connector.drawio.png)  | `element1 <-left[thickness=10]-> element2: Connector` | `backend <-left[thickness=10]-> client: Publish/Subscribe` |
-| ![Data](sw@rt/data.drawio.png)  | `ADFData($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFData(user, "User")`; ADFData can take inner attributes, constructors and methods like the PlantUML class element |
-| ![Technology](common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(mysql, "MySQL Database")` |
-| ![Usage](sw@rt/rel_usage.drawio.png)  | `ADFRelation($from, $to, "use", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(frontend, backend, "use")`, `ADFRelation(userrole, system, "use", "register account", "d")` ("d" instead of "down", ... possible) |
-| ![Dataflow](sw@rt/rel_dataflow.drawio.png) | same as above, but with `"dataflow"` instead of `"use"` | |
-| ![System Scope](sw@rt/system_scope.drawio.png)  |  `rectangle "System Scope" as SystemScope #line.dashed{ ... }` | put rectangle around the elements that are the scope of the system. |
-| ![Note](common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
-| ![Note Relation](common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
+| ![Role](adf-elements/common/role.drawio.png)     | `ADFRole($id, $name)` | `ADFRole(u, "User")` |
+| ![External System](adf-elements/sw@rt/system.drawio.png)  | `ADFSystem($id, $name, $shade = 1)`, optional shade parameter in range {0, 1, 2, 3} with 1 being the default background color shade. | `ADFExternalSystem(b, "Backend")`, `ADFSystem(b, "Backend", 2)` |
+| ![External System](adf-elements/sw@rt/system.drawio.png)  | `ADFExternalSystem($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFExternalSystem(iam, "IAM")`, `ADFExternalSystem(iam, "IAM", 2)` |
+| ![Layer](adf-elements/sw@rt/layer.drawio.png)  | `ADFLayer($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFLayer(ld, "Data Layer")` (layer has no inside elements, hence, the label is inside the main layer box), `ADFLayer(ld, "Data Layer") {ADFComponent(r, "Repository", 2) }` with `ADFComponent(...` and `}` on a new line each (layer has an inside element, hence, the label is inside the layer label box) |
+| ![Cluster](adf-elements/sw@rt/cluster.drawio.png)  | `ADFCluster($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFCluster(sh, "Shopping")` (cluster has no inside elements, hence, the label is inside the main cluster box), `ADFCluster(sh, "Shopping") { ADFComponent(sc, "Shopping Cart", 2) }` (layer has an inside element, hence, the label is inside the layer label box) |
+| ![Component](adf-elements/sw@rt/component.drawio.png)  | `ADFComponent($id, $name, $shade = 1)`,  `shade` as in `ADFSystem` | `ADFComponent(ic, "Image Converter")`|
+| ![Interface Connector](adf-elements/sw@rt/interface_connector.drawio.png)  | `-0)-` or `-(0-`, direction can be added after first dash | `backend -left0)- client : "/posts endpoint"` |
+| ![Interface](adf-elements/sw@rt/interface.drawio.png)  | `ADFInterface($id, $name, $shade = 1)`,  `shade` as in `ADFSystem` | `ADFInterface(p, "Printer")` |
+| ![Connector](adf-elements/sw@rt/connector.drawio.png)  | `element1 <-left[thickness=10]-> element2: Connector` | `backend <-left[thickness=10]-> client: Publish/Subscribe` |
+| ![Data](adf-elements/sw@rt/data.drawio.png)  | `ADFData($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFData(user, "User")`; ADFData can take inner attributes, constructors and methods like the PlantUML class element |
+| ![Technology](adf-elements/common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(mysql, "MySQL Database")` |
+| ![Usage](adf-elements/sw@rt/rel_usage.drawio.png)  | `ADFRelation($from, $to, "use", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(frontend, backend, "use")`, `ADFRelation(userrole, system, "use", "register account", "d")` ("d" instead of "down", ... possible) |
+| ![Dataflow](adf-elements/sw@rt/rel_dataflow.drawio.png) | same as above, but with `"dataflow"` instead of `"use"` | |
+| ![System Scope](adf-elements/sw@rt/system_scope.drawio.png)  |  `rectangle "System Scope" as SystemScope #line.dashed{ ... }` | put rectangle around the elements that are the scope of the system. |
+| ![Note](adf-elements/common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
+| ![Note Relation](adf-elements/common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
 
 ## Table of Software@Devtime elements and relations
 
 | Element     | Corresponding PlantUML procedure | Example Code |
 | ----------- | -------------------------------- | ------------ |
-| ![Module](sw@dt/module.drawio.png)  | `ADFModule($id, $name, $shade = 1)`, `shade` as in `ADFSystem` (but using green Devtime color shades) | `ADFModule(ep, "Event Processor")`, `ADFModule(ep, "Event Processor", 2)` |
-| ![Interface](sw@dt/interface.drawio.png)  | `ADFInterface($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFInterface(rh, "Registration Handler")` |
-| ![Package](sw@dt/package.drawio.png)  | `ADFPackage($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFPackage(b, "Business")` (package has no inside elements, hence, the label is inside the main package box), `ADFPackage(b, "Business") { ADFModule(us, "User Service", 2) }` (package has an inside element, hence, the label is inside the package label box) |
-| ![Datatype](sw@dt/datatype.drawio.png)  | `ADFDatatype($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDatatype(u, "User")`; ADFDatatype can take inner attributes, constructors and methods like the PlantUML class element |
-| ![Library](sw@dt/library.drawio.png)  | `ADFLibrary($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFLibrary(ok, "okHTTP")` |
-| ![Technology](common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(t, "Technology")`, `ADFTechnology(t, "Technology", 2)` |
-| ![Usage](sw@rt/rel_usage.drawio.png)  | `ADFRelation($from, $to, "use", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(shopping, basket, "use")`, `ADFRelation(shopping, basket, "use", "add item", "d")` ("d" instead of "down", ... possible) |
-| ![Refinement](sw@dt/rel_refinement.drawio.png)  |  same as above, but with `"refine"` instead of `"use"` | |
-| ![Other UML Relations](sw@dt/rel_uml_class_diagram.drawio.png)  | Asscociation : `--` <br> Generalization: `--\|>`<br> Realization: `..\|>`<br> Composition: `*--` <br> Aggregation: `o--`| see PlantUML class diagramm documentation for many examples |
-| ![Note](common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
-| ![Note Relation](common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
+| ![Module](adf-elements/sw@dt/module.drawio.png)  | `ADFModule($id, $name, $shade = 1)`, `shade` as in `ADFSystem` (but using green Devtime color shades) | `ADFModule(ep, "Event Processor")`, `ADFModule(ep, "Event Processor", 2)` |
+| ![Interface](adf-elements/sw@dt/interface.drawio.png)  | `ADFInterface($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFInterface(rh, "Registration Handler")` |
+| ![Package](adf-elements/sw@dt/package.drawio.png)  | `ADFPackage($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFPackage(b, "Business")` (package has no inside elements, hence, the label is inside the main package box), `ADFPackage(b, "Business") { ADFModule(us, "User Service", 2) }` (package has an inside element, hence, the label is inside the package label box) |
+| ![Datatype](adf-elements/sw@dt/datatype.drawio.png)  | `ADFDatatype($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDatatype(u, "User")`; ADFDatatype can take inner attributes, constructors and methods like the PlantUML class element |
+| ![Library](adf-elements/sw@dt/library.drawio.png)  | `ADFLibrary($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFLibrary(ok, "okHTTP")` |
+| ![Technology](adf-elements/common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(t, "Technology")`, `ADFTechnology(t, "Technology", 2)` |
+| ![Usage](adf-elements/sw@rt/rel_usage.drawio.png)  | `ADFRelation($from, $to, "use", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(shopping, basket, "use")`, `ADFRelation(shopping, basket, "use", "add item", "d")` ("d" instead of "down", ... possible) |
+| ![Refinement](adf-elements/sw@dt/rel_refinement.drawio.png)  |  same as above, but with `"refine"` instead of `"use"` | |
+| ![Other UML Relations](adf-elements/sw@dt/rel_uml_class_diagram.drawio.png)  | Asscociation : `--` <br> Generalization: `--\|>`<br> Realization: `..\|>`<br> Composition: `*--` <br> Aggregation: `o--`| see PlantUML class diagramm documentation for many examples |
+| ![Note](adf-elements/common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
+| ![Note Relation](adf-elements/common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
 
 ## Table of Environment@Runtime elements and relations
 
 | Element     | Corresponding PlantUML procedure | Example Code |
 | ----------- | -------------------------------- | ------------ |
-| ![Computing Node](en@rt/computing_node.drawio.png)  | `ADFComputingNode($id, $name, $shade = 1)`, `shade` as in `ADFSystem` (but using orange Environment@Runtime color shades) | `ADFComputingNode(ls, "Linux Server")`, `ADFComputingNode(ls, "Linux Server", 2)` |
-| ![Execution Environment](en@rt/execution_environment.drawio.png) | `ADFExecutionEnvironment($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFExecutionEnvironment(jvm, "Java Virtual Machinge")` |
-| ![Deployment Artifact](en@rt/deployment_artifact.drawio.png) | `ADFDeploymentArtifact($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDeploymentArtifact(bwar, "backend.war")` |
-| ![Operation Process](en@rt/operation_process.drawio.png)  | `ADFOperationProcess($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFOperationProcess(us, "Update System")` |
-| ![Technology](common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(m, "MySQL")` |
-| ![Thread](en@rt/thread.drawio.png)  | `ADFThread($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFThread(sc, "Scheduler")` |
-| ![Role](common/role.drawio.png)  | `ADFRole($id, $name)` | `ADFRole(so, "System Operator")` |
-| ![Organizational Unit](en@rt/organizational_unit.drawio.png)  | `ADFOrganizationalUnit($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFOrganizationalUnit(dev, "Development Team")` |
-| ![Operate](en@rt/rel_operate.drawio.png) | `ADFRelation($from, $to, "operate", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(admin, server, "operate")`, `ADFRelation(admin, server, "operate", "evaluate log data", "d")` ("d" instead of "down", ... possible) |
-| ![Execute](en@rt/rel_execute.drawio.png) | same as above, but with `"execute"` instead of `"operate"` | |
-| ![Deploy](en@rt/rel_deploy.drawio.png) | same as above, but with `"deploy"` instead of `"operate"` | |
-| ![Own](en@rt/rel_own.drawio.png) | same as above, but with `"own"` instead of `"operate"` | |
-| ![Manifest](en@rt/rel_manifest.drawio.png) | same as above, but with `"manifest"` instead of `"operate"` | |
-| ![Communication Path](en@rt/rel_communication_path.drawio.png)  | `-->` (with optional layouting instructions) | `server -up-> admin` |
-| ![Note](common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
-| ![Note Relation](common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
+| ![Computing Node](adf-elements/en@rt/computing_node.drawio.png)  | `ADFComputingNode($id, $name, $shade = 1)`, `shade` as in `ADFSystem` (but using orange Environment@Runtime color shades) | `ADFComputingNode(ls, "Linux Server")`, `ADFComputingNode(ls, "Linux Server", 2)` |
+| ![Execution Environment](adf-elements/en@rt/execution_environment.drawio.png) | `ADFExecutionEnvironment($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFExecutionEnvironment(jvm, "Java Virtual Machinge")` |
+| ![Deployment Artifact](adf-elements/en@rt/deployment_artifact.drawio.png) | `ADFDeploymentArtifact($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDeploymentArtifact(bwar, "backend.war")` |
+| ![Operation Process](adf-elements/en@rt/operation_process.drawio.png)  | `ADFOperationProcess($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFOperationProcess(us, "Update System")` |
+| ![Technology](adf-elements/common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(m, "MySQL")` |
+| ![Thread](adf-elements/en@rt/thread.drawio.png)  | `ADFThread($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFThread(sc, "Scheduler")` |
+| ![Role](adf-elements/common/role.drawio.png)  | `ADFRole($id, $name)` | `ADFRole(so, "System Operator")` |
+| ![Organizational Unit](adf-elements/en@rt/organizational_unit.drawio.png)  | `ADFOrganizationalUnit($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFOrganizationalUnit(dev, "Development Team")` |
+| ![Operate](adf-elements/en@rt/rel_operate.drawio.png) | `ADFRelation($from, $to, "operate", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(admin, server, "operate")`, `ADFRelation(admin, server, "operate", "evaluate log data", "d")` ("d" instead of "down", ... possible) |
+| ![Execute](adf-elements/en@rt/rel_execute.drawio.png) | same as above, but with `"execute"` instead of `"operate"` | |
+| ![Deploy](adf-elements/en@rt/rel_deploy.drawio.png) | same as above, but with `"deploy"` instead of `"operate"` | |
+| ![Own](adf-elements/en@rt/rel_own.drawio.png) | same as above, but with `"own"` instead of `"operate"` | |
+| ![Manifest](adf-elements/en@rt/rel_manifest.drawio.png) | same as above, but with `"manifest"` instead of `"operate"` | |
+| ![Communication Path](adf-elements/en@rt/rel_communication_path.drawio.png)  | `-->` (with optional layouting instructions) | `server -up-> admin` |
+| ![Note](adf-elements/common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
+| ![Note Relation](adf-elements/common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
 
 ## Table of Environment@Devtime elements and relations
 
 | Element     | Corresponding PlantUML procedure | Example Code |
 | ----------- | -------------------------------- | ------------ |
-| ![Role](common/role.drawio.png)  | `ADFRole($id, $name)` | `ADFRole(so, "System Operator")` |
-| ![Organizational Unit](en@rt/organizational_unit.drawio.png)  | `ADFOrganizationalUnit($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFOrganizationalUnit(dev, "Development Team")` |
-| ![Project Increment](en@dt/project_increment.drawio.png)  | `ADFProjectIncrement($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFProjectIncrement(pi, "Sprint 1")`, `ADFProjectIncrement(pi, "User registration features")` |
-| ![Deployment Artifact](en@rt/deployment_artifact.drawio.png) | `ADFDeploymentArtifact($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDeploymentArtifact(bwar, "backend.war")` |
-| ![Development Process](en@dt/development_process.drawio.png)  | `ADFDevelopmentProcess($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDevelopmentProcess(dp, "Sprint")` |
-| ![Development Tool](en@dt/development_tool.drawio.png)  | `ADFDevelopmentTool($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDevelopmentTool(dt, "Jenkins")` |
-| ![Technology](common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(t, "Docker")` |
-| ![Usage](sw@rt/rel_usage.drawio.png)  | `ADFRelation($from, $to, "use", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(tool, process, "use")`, `ADFRelation(process, tool, "use", "build automation", "d")` ("d" instead of "down", ... possible) |
-| ![Own](en@rt/rel_own.drawio.png) | same as above, but with `"own"` instead of `"use"` | |
-| ![Manifest](en@rt/rel_manifest.drawio.png) | same as above, but with `"manifest"` instead of `"use"` | |
-| ![Note](common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
-| ![Note Relation](common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `tool - note`, `tool -down- note` |
+| ![Role](adf-elements/common/role.drawio.png)  | `ADFRole($id, $name)` | `ADFRole(so, "System Operator")` |
+| ![Organizational Unit](adf-elements/en@rt/organizational_unit.drawio.png)  | `ADFOrganizationalUnit($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFOrganizationalUnit(dev, "Development Team")` |
+| ![Project Increment](adf-elements/en@dt/project_increment.drawio.png)  | `ADFProjectIncrement($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFProjectIncrement(pi, "Sprint 1")`, `ADFProjectIncrement(pi, "User registration features")` |
+| ![Deployment Artifact](adf-elements/en@rt/deployment_artifact.drawio.png) | `ADFDeploymentArtifact($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDeploymentArtifact(bwar, "backend.war")` |
+| ![Development Process](adf-elements/en@dt/development_process.drawio.png)  | `ADFDevelopmentProcess($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDevelopmentProcess(dp, "Sprint")` |
+| ![Development Tool](adf-elements/en@dt/development_tool.drawio.png)  | `ADFDevelopmentTool($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDevelopmentTool(dt, "Jenkins")` |
+| ![Technology](adf-elements/common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(t, "Docker")` |
+| ![Usage](adf-elements/sw@rt/rel_usage.drawio.png)  | `ADFRelation($from, $to, "use", $description = "", $direction = "")` with optional (but strongly recommended) description and direction (`"left"`, `"right"`, `"up"`, `"down"`) to control layouting | `ADFRelation(tool, process, "use")`, `ADFRelation(process, tool, "use", "build automation", "d")` ("d" instead of "down", ... possible) |
+| ![Own](adf-elements/en@rt/rel_own.drawio.png) | same as above, but with `"own"` instead of `"use"` | |
+| ![Manifest](adf-elements/en@rt/rel_manifest.drawio.png) | same as above, but with `"manifest"` instead of `"use"` | |
+| ![Note](adf-elements/common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
+| ![Note Relation](adf-elements/common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `tool - note`, `tool -down- note` |
