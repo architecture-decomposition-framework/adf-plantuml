@@ -1,0 +1,14 @@
+@startuml example1
+!include ../ADF.puml
+
+ADFRole(user, "User")
+ADFRole(admin, "Administrator")
+
+ADFSystem(ws, "Web Shop")
+ADFExternalSystem(pp, "Payment Provider")
+
+ADFRelation(admin, ws, "use", "configure,\ntroubleshoot")
+ADFRelation(user, ws, "use", "register,\nbrowse,\nbuy")
+
+pp -left0)- ws : "pay"
+@enduml

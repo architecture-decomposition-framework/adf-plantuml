@@ -1,0 +1,39 @@
+@startuml example2
+!include ../ADF.puml
+
+ADFOutsidePort(web)
+
+ADFSystem(ws, "Web Shop", 0) {
+    ADFComponent(browsing, "Product Browsing") {
+        ADFComponent(pi, "Product Information", 2)
+        ADFComponent(prod, "Product Catalog", 2)
+    }
+    ADFComponent(cart, "Shopping Cart")
+    note as cartnote
+        Shopping Cart component is shown 
+        in detail in another diagram
+    end note
+    cart - cartnote
+    ADFComponent(ord, "Ordering") {
+        ADFComponent(op, "Order Processing", 2)
+        ADFComponent(inv, "Inventory", 2)
+        ADFComponent(pp, "Payment Provider", 2)
+    }
+}
+
+ADFOutsidePort(ps)
+
+ADFRelation(web, pi, "use", "via web interface")
+ADFRelation(pi, prod, "use", "browse products", "right")
+ADFRelation(pi, cart, "use", "add to cart")
+ADFRelation(cart, op, "use", "order")
+ADFRelation(op, inv, "use", "check stock")
+ADFRelation(op, pp, "use", "pay")
+note on link
+    no money is
+    transferred until
+    payment is confirmed
+end note
+ADFRelation(pp, ps, "use", "pay via Payment Provider")
+
+@enduml

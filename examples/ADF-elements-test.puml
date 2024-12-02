@@ -1,0 +1,47 @@
+@startuml test3
+!include ../ADF.puml
+
+'================ COMMON ELEMENTS =================
+ADFRole(role1, "Administrator")
+ADFTechnology(tech1, "Java")
+ADFRelation(role1, tech1, "uses")
+
+'================ SOFTWARE@RUNTIME ELEMENTS =================
+ADFSystem(sys1, "Payment System")
+ADFExternalSystem(extsys1, "External API")
+ADFRelation(sys1, extsys1, "use", "send money")
+ADFLayer(layer1, "Business Logic")
+ADFLayer(layer1, "Business Logic") {
+    ADFComponent(comp1, "Payment Service")
+}
+ADFCluster(cluster1, "Microservices")
+ADFComponent(comp1, "User Service")
+ADFInterface(intf1, "REST API")
+ADFData(data1, "User Data")
+
+'================ SOFTWARE@DEVTIME ELEMENTS =================
+ADFModule(mod1, "User Module")
+ADFPackage(pkg1, "User Package")
+ADFDatatype(datatype1, "User Type")
+ADFDatatype(datatype2, "User Type") {
+    name
+    email
+    login()
+    logout()
+}
+ADFLibrary(lib1, "Utility Library")
+
+'================ ENVIRONMENT@RUNTIME ELEMENTS =================
+ADFComputingNode(node1, "Server Node")
+ADFExecutionEnvironment(env1, "Docker Container")
+ADFDeploymentArtifact(artifact1, "Deployment Script")
+ADFOperationProcess(process1, "Backup Process")
+ADFThread(thread1, "Worker Thread")
+ADFOrganizationalUnit(org1, "IT Department")
+
+'================ ENVIRONMENT@DEVTIME ELEMENTS =================
+ADFProjectIncrement(proj1, "Sprint 1")
+ADFDevelopmentProcess(devproc1, "Agile Process")
+ADFDevelopmentTool(devtool1, "Jenkins")
+
+@enduml
