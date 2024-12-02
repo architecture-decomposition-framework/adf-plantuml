@@ -12,6 +12,7 @@ ADF Elements and Relations with PlantUML
 - [Table of Software@Devtime elements and relations](#table-of-softwaredevtime-elements-and-relations)
 - [Table of Environment@Runtime elements and relations](#table-of-environmentruntime-elements-and-relations)
 - [Table of Environment@Devtime elements and relations](#table-of-environmentdevtime-elements-and-relations)
+- [Footnote](#footnote)
 
 ## Introduction
 
@@ -177,3 +178,9 @@ Some noteworthy observations regarding this second example:
 | ![Manifest](adf-elements/en@rt/rel_manifest.drawio.png) | same as above, but with `"manifest"` instead of `"use"` | |
 | ![Note](adf-elements/common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
 | ![Note Relation](adf-elements/common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `tool - note`, `tool -down- note` |
+
+## Footnote
+
+This page was written by Johannes Schneider. You can use the [ADF.puml](ADF.puml) template under the [MIT license](./LICENSE) and this text here and the examples under the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Some preliminary work was done 2024 by Yan-Chun Chang in her Bachelor's thesis with the (German) title "Wie gut eignen sich die textbasierte Diagrammerstellungssprache PlantUML zur Erstellung von Architektur-Diagrammen nach der ADF-Methode im Vergleich zur Erstellung mit Diagrams.net?" at HTWG Konstanz (University of Applied Science).
