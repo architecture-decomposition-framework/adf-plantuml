@@ -1,7 +1,7 @@
 @startuml example2
 !include ../ADF.puml
 
-ADFOutsidePort(web)
+ADFInvisibleElement(web)
 
 ADFSystem(ws, "Web Shop", 0) {
     ADFComponent(browsing, "Product Browsing") {
@@ -17,11 +17,11 @@ ADFSystem(ws, "Web Shop", 0) {
     ADFComponent(ord, "Ordering") {
         ADFComponent(op, "Order Processing", 2)
         ADFComponent(inv, "Inventory", 2)
-        ADFComponent(pp, "Payment Provider", 2)
+        ADFComponent(pp, "Payment**\n**Provider", 2)
     }
 }
 
-ADFOutsidePort(ps)
+ADFInvisibleElement(ps)
 
 ADFRelation(web, pi, "use", "via web interface")
 ADFRelation(pi, prod, "use", "browse products", "right")

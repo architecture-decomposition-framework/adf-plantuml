@@ -2,7 +2,7 @@
 
 
 '-------------------------------------
-'ADF.puml, version 0.9.0
+'ADF.puml, version 1.0.0
 '-------------------------------------
 'Copyright (c) 2024 Johannes Schneider
 '-------------------------------------
@@ -26,6 +26,7 @@ skinparam {
 
     'set font to Verdana and style to normal (unfortunately, there is no DefaultStereotypeFontStyle)
     DefaultFontName Verdana
+    RectangleFontStyle normal
     DefaultFontStyle normal
     ActorStereotypeFontStyle normal
     AgentStereotypeFontStyle normal
@@ -63,9 +64,12 @@ skinparam {
 
     'Notes with white background
     NoteBackgroundColor White
+    'Lollipop interfaces transparent
+    InterfaceBackgroundColor transparent
+    InterfaceBorderColor Black
 
     'ADFOutsidePort
-    rectangle<<Outside Port>> {
+    rectangle<<Invisible>> {
         borderColor Transparent
         fontColor Transparent
         BackgroundColor Transparent
@@ -135,8 +139,8 @@ allowmixing
     rectangle "**$name**" <<Technology>> as $id $col_tech
 !endprocedure
 
-!unquoted procedure ADFOutsidePort($id)
-    rectangle " " <<Outside Port>> as $id
+!unquoted procedure ADFInvisibleElement($id)
+    rectangle " " <<Invisible>> as $id
 !endprocedure
 
 !unquoted procedure ADFRelation($from, $to, $type, $description = "", $direction = "")

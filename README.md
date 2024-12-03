@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 -->
 # adf-plantuml <!-- omit in toc -->
 
 ![ADF Logo](https://github.com/architecture-decomposition-framework/welcome-to-adf/raw/main/commons/adf-logo265x180.png)
@@ -9,7 +10,9 @@ ADF Elements and Relations with PlantUML
 - [Introduction](#introduction)
 - [Examples and general notes](#examples-and-general-notes)
 - [Table of Software@Runtime elements and relations](#table-of-softwareruntime-elements-and-relations)
+  - [A note on UML sequence diagrams](#a-note-on-uml-sequence-diagrams)
 - [Table of Software@Devtime elements and relations](#table-of-softwaredevtime-elements-and-relations)
+  - [A note on UML class diagrams](#a-note-on-uml-class-diagrams)
 - [Table of Environment@Runtime elements and relations](#table-of-environmentruntime-elements-and-relations)
 - [Table of Environment@Devtime elements and relations](#table-of-environmentdevtime-elements-and-relations)
 - [Footnote](#footnote)
@@ -20,7 +23,7 @@ ADF Elements and Relations with PlantUML
 
 We've created [ADF.puml](ADF.puml), a PlantUML template which defines all ADF elements and relations to be used in PlantUML. Download the template and import it via `!include ADF.puml` into your diagram.
 
-In this document, we first give two examples for ADF diagrams, illustrating some of the concepts. Then a detailed list of all elements and relations and how to use them follows.
+In this document, we first give a few examples for ADF diagrams to illustrate some of the concepts. Then a comprehensive list of all elements and relations, along with usage instructions, is provided.
 
 ## Examples and general notes
 
@@ -28,7 +31,7 @@ Here is a simple example for a system-context-overview:
 
 ![example1](examples/example1.png)
 
-```text
+```plantumlcode
 @startuml example1
 !include ADF.puml
 
@@ -49,17 +52,17 @@ Some notes:
 
 - You have to import [ADF.puml](ADF.puml) which contains all configuration and custom ADF*-commands for the ADF elements and relations.
 - The commands are realized via so called "unquoted procedures". Therefore, you do not have to use quotes for the parameters. A widely used convention is to use plain parameters for the IDs of the elements (`user`, `admin`, `ws`, `pp`) and quotes around names and labels (e.g. `"use"`, `"configure"`, `"pay"` and so on).
-- PlantUML uses autolayout, which often produces less than optimal results. However, with only a little bit of experimentation, the layout can be improved drastically. In the above example, the order of the two roles was chosen deliberately to show the "normal" user role left to the admin role. Furthermore, the left instruction in the lollipop connector arranges the systems next to each other.
+- PlantUML uses autolayout, which does not always produces optimal results. However, with only a little bit of experimentation, the layout can be improved drastically. In the above example, the order of the two roles was chosen deliberately to show the "normal" user role left to the admin role. Furthermore, the left instruction in the lollipop connector arranges the systems next to each other.
 
 Here is another, more complicated example of a functional decomposition of the Web Shop system.
 
 ![example2](examples/example2.png)
 
-```text
+```plantumlcode
 @startuml example1
 !include ADF.puml
 
-ADFOutsidePort(web)
+ADFInvisibleElement(web)
 
 ADFSystem(ws, "Web Shop", 0) {
     ADFComponent(browsing, "Product Browsing") {
@@ -75,11 +78,11 @@ ADFSystem(ws, "Web Shop", 0) {
     ADFComponent(ord, "Ordering") {
         ADFComponent(op, "Order Processing", 2)
         ADFComponent(inv, "Inventory", 2)
-        ADFComponent(pp, "Payment Provider", 2)
+        ADFComponent(pp, "Payment**\n**Provider", 2)
     }
 }
 
-ADFOutsidePort(ps)
+ADFInvisibleElement(ps)
 
 ADFRelation(web, pi, "uses", "Web Browser")
 ADFRelation(pi, prod, "uses", "browse products", "right")
@@ -100,9 +103,40 @@ ADFRelation(pp, ps, "uses", "pay via Payment Provider")
 Some noteworthy observations regarding this second example:
 
 - You can nest elements. Since every component has the same default background color, there is an optional third "shade"-parameter to slightly change the color shade and make the diagrams more readable. A value of 1 is the default.
-- Sometimes, you want to illustrate at which points interaction from the outside of a system or component takes place without introducing more systems or components. To achieve this, a `ADFOutsidePort` has been introduced (which is basically a transparent rectangle).
+- If you want to wrap the name of a component (or any other element), you need to use `**\n**` as a line separator in order to maintain bold text in the name, which is illustrated in the "Payment Provider" component. This is a quirk due to the way the elements are defined.
+- Sometimes, you want to illustrate at which points interaction from the outside of a system or component takes place without introducing more systems or components. To achieve this, a `ADFInvisibleElement` has been introduced (which is basically a transparent rectangle).
 - Again, the single "right" instruction on the second ADFRelation has huge impact on the diagram layout. Also the order of the elements and relation can change the layout. It is a good start to experiment if the autolayout does not suit your needs.
 - In this diagram, some notes have been added to demonstrate the usage of the note element. The second note has been placed directly on the "pay"-relation. Again, the layout changes a lot if you place the cartnote outside the component or even the system.
+
+Our last example focuses on how to indicate provided and required interfaces.
+
+![example3](examples/example3.png)
+
+```plantumlcode
+@startuml example3
+!include ../ADF.puml
+
+ADFSystem(backend, "Weather Forecast")
+
+() "provide weather forecast" as pwf
+backend -up- pwf
+
+backend ---(( "query historial data"
+backend --(( query_forecast_data
+
+label "query\nweather\nstation" as qws
+backend -r-( qws
+@enduml
+```
+
+Provided interfaces are defined with the `()` syntax.
+
+For required interfaces, there are different possibilities:
+
+- a succinct `-((` notation, which unfortunately does not support spaces when used without quotes and, when used with quotes, also prints the quotes on the diagram.
+- a workaround of linking to a label, which looks better but sometimes is placed a bit off.
+
+Note that the length of the required interface line has impact on the layout and readability of the diagram: `-(` versus `--(` versus `--(`.
 
 ## Table of Software@Runtime elements and relations
 
@@ -125,6 +159,35 @@ Some noteworthy observations regarding this second example:
 | ![Note](adf-elements/common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
 | ![Note Relation](adf-elements/common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
 
+### A note on UML sequence diagrams
+
+UML sequence diagrams are an excellent way to describe interaction of systems or components. Furthermore, since their layout naturally grows to the bottom, they can be rendered very well by PlantUML.
+
+There is no need to import `ADF.puml` when using UML sequence diagrams in an architecture documentation.
+
+Here is some example with a plain style that matches the other ADF diagrams and uses auto-activation, which makes writing sequence diagrams even faster.
+
+![example-sequence](examples/example-sequence.png)
+
+```plantumlcode
+@startuml example-sequence
+!theme plain
+autoactivate on
+
+participant "User" as U
+participant "Shopping Cart" as SC
+participant "Inventory" as I
+participant "Price Calculator" as PC
+
+U -> SC : add smartphone
+  SC -> I : check stock of smartphone
+  return 25
+  SC -> PC : check price
+  return 399$
+return success
+@enduml
+```
+
 ## Table of Software@Devtime elements and relations
 
 | Element     | Corresponding PlantUML procedure | Example Code |
@@ -140,6 +203,23 @@ Some noteworthy observations regarding this second example:
 | ![Other UML Relations](adf-elements/sw@dt/rel_uml_class_diagram.drawio.png)  | Asscociation : `--` <br> Generalization: `--\|>`<br> Realization: `..\|>`<br> Composition: `*--` <br> Aggregation: `o--`| see PlantUML class diagramm documentation for many examples |
 | ![Note](adf-elements/common/note.drawio.png)  | `note "text" as id` | `note "Some note" as n`; also see examples in first section for how to use notes on relations |
 | ![Note Relation](adf-elements/common/rel_note.drawio.png)  | `element - note`, `element -- note` (longer connection, layout direction possible) | `backend - note`, `backend -down- note` |
+
+### A note on UML class diagrams
+
+An UML class diagram also expresses a Data@Devtime view on the system, which usually is already quite close to the implementation. There is no need to import `ADF.puml` when using UML class diagrams in an architecture documentation. However, to get a style matching the other ADF diagrams, you can use the following lines:
+
+```plantumlcode
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+hide circle
+hide empty members
+hide empty methods
+
+'further code
+@enduml
+```
 
 ## Table of Environment@Runtime elements and relations
 

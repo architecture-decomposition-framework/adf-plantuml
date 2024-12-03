@@ -1,0 +1,14 @@
+@startuml example3
+!include ../ADF.puml
+
+ADFSystem(backend, "Weather Forecast")
+
+() "provide weather forecast" as pwf
+backend -up- pwf
+
+backend ---(( "query historial data"
+backend --(( query_forecast_data
+
+label "query\nweather\nstation" as qws
+backend -r-( qws
+@enduml
