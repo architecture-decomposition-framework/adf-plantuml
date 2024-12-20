@@ -2,7 +2,7 @@
 
 
 '-------------------------------------
-'ADF.puml, version 1.0.0
+'ADF.puml, version 1.0.1
 '-------------------------------------
 'Copyright (c) 2024 Johannes Schneider
 '-------------------------------------
@@ -178,7 +178,7 @@ allowmixing
 !endprocedure
 
 !unquoted procedure ADFData($id, $name, $shade = 1)
-    class "<<Datatype>>\n**$name**" as $id colorSWRT($shade)
+    class "<<Data>>\n**$name**" as $id colorSWRT($shade)
 !endprocedure
 
 '================ SOFTWARE@DEVTIME ELEMENTS =================
