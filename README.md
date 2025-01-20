@@ -21,7 +21,7 @@ ADF Elements and Relations with PlantUML
 
 [PlantUML](https://plantuml.com/) is a widely used framework that follows the "diagrams-as-code" principle: Instead of using some diagramming tool, you define a diagram using special commands and let the diagrams be generated for you. This is particularly suitable for smaller diagrams. On large diagrams, the PlantUML's autolayout algorithm does not always produce good results. However, it is often possible to tweak the results to some degree (see notes on the examples of the next section).
 
-We've created [ADF.puml](ADF.puml), a PlantUML template which defines all ADF elements and relations to be used in PlantUML. Download the template and import it via `!include ADF.puml` into your diagram.
+We've created [ADF.puml](ADF.puml), a PlantUML template which defines all ADF elements and relations to be used in PlantUML. Download the template and import it via `!include ADF.puml` into your diagram or use [this link](https://editor.plantuml.com/uml/SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80) to get started right away in the PlantUML online editor.
 
 In this document, we first give a few examples for ADF diagrams to illustrate some of the concepts. Then a comprehensive list of all elements and relations, along with usage instructions, is provided.
 
