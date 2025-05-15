@@ -17,7 +17,20 @@ ADFLayer(layer1, "Business Logic") {
 ADFCluster(cluster1, "Microservices")
 ADFComponent(comp1, "User Service")
 ADFInterface(intf1, "REST API")
-ADFData(data1, "User Data")
+ADFData(data1, "User Data") {
+    name
+    email
+}
+ADFDataContainer(dataCustomer, "Customer") {
+    ADFData(dataAddress, "Address", 2)
+    ADFDataContainer(dataPayment, "Payment Details", 2) {
+        ADFData(dataCC, "Credit Card", 3) {
+            provider
+            nr
+        }
+        ADFData(dataPP, "Paypal Address", 3)
+    }
+}
 
 '================ SOFTWARE@DEVTIME ELEMENTS =================
 ADFModule(mod1, "User Module")
