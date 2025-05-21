@@ -2,7 +2,7 @@
 
 
 '-------------------------------------
-'ADF.puml, version 1.1.0
+'ADF.puml, version 1.2.0
 '-------------------------------------
 'Copyright (c) 2025 Johannes Schneider
 '-------------------------------------
@@ -150,6 +150,14 @@ allowmixing
         !local $descriptionWithNewline = "\n" + $description
     !endif
     $from .$direction.> $to : <<$type>>$descriptionWithNewline
+!endprocedure
+
+!unquoted procedure ADFRelationTwoWay($from, $to, $type, $description = "", $direction = "")
+    !local $descriptionWithNewline = ""
+    !if $description != ""
+        !local $descriptionWithNewline = "\n" + $description
+    !endif
+    $from <.$direction.> $to : <<$type>>$descriptionWithNewline
 !endprocedure
 
 '================ SOFTWARE@RUNTIME ELEMENTS =================

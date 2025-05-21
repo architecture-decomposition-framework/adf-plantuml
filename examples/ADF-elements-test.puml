@@ -4,7 +4,10 @@
 '================ COMMON ELEMENTS =================
 ADFRole(role1, "Administrator")
 ADFTechnology(tech1, "Java")
+ADFTechnology(tech2, "Java Runtime")
 ADFRelation(role1, tech1, "uses")
+ADFRelationTwoWay(tech1, tech2, "dataflow", "information")
+
 
 '================ SOFTWARE@RUNTIME ELEMENTS =================
 ADFSystem(sys1, "Payment System")
