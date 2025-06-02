@@ -149,7 +149,7 @@ Note that the length of the required interface line has impact on the layout and
 | ![Cluster](adf-elements/sw@rt/cluster.drawio.png)  | `ADFCluster($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFCluster(sh, "Shopping")` (cluster has no inside elements, hence, the label is inside the main cluster box), `ADFCluster(sh, "Shopping") { ADFComponent(sc, "Shopping Cart", 2) }` (layer has an inside element, hence, the label is inside the layer label box) |
 | ![Component](adf-elements/sw@rt/component.drawio.png)  | `ADFComponent($id, $name, $shade = 1)`,  `shade` as in `ADFSystem` | `ADFComponent(ic, "Image Converter")`|
 | ![Interface Connector](adf-elements/sw@rt/interface_connector.drawio.png)  | `-0)-` or `-(0-`, direction can be added after first dash | `backend -left0)- client : "/posts endpoint"` |
-| ![Interface](adf-elements/sw@rt/interface.drawio.png)  | `ADFInterface($id, $name, $shade = 1)`,  `shade` as in `ADFSystem` | `ADFInterface(p, "Printer")` |
+| ![Interface](adf-elements/sw@rt/interface.drawio.png)  | `ADFInterfaceRT($id, $name, $shade = 1)`,  `shade` as in `ADFSystem` | `ADFInterfaceRT(p, "Printer")` |
 | ![Connector](adf-elements/sw@rt/connector.drawio.png)  | `element1 <-left[thickness=10]-> element2: Connector` | `backend <-left[thickness=10]-> client: Publish/Subscribe` |
 | ![Data](adf-elements/sw@rt/data.drawio.png)  | `ADFData($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFData(user, "User")`; ADFData can take inner attributes, constructors and methods like the PlantUML class element. If you want to nest Data elements, use `ADFDataContainer($id, $name, $shade = 1)` for outer elements, e.g. `ADFDataContainer(u, "User", 0) { ADFData(a, "Address") }` |
 | ![Technology](adf-elements/common/technology.drawio.png)  | `ADFTechnology($id, $name)` | `ADFTechnology(mysql, "MySQL Database")` |
@@ -193,7 +193,7 @@ return success
 | Element     | Corresponding PlantUML procedure | Example Code |
 | ----------- | -------------------------------- | ------------ |
 | ![Module](adf-elements/sw@dt/module.drawio.png)  | `ADFModule($id, $name, $shade = 1)`, `shade` as in `ADFSystem` (but using green Devtime color shades) | `ADFModule(ep, "Event Processor")`, `ADFModule(ep, "Event Processor", 2)` |
-| ![Interface](adf-elements/sw@dt/interface.drawio.png)  | `ADFInterface($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFInterface(rh, "Registration Handler")` |
+| ![Interface](adf-elements/sw@dt/interface.drawio.png)  | `ADFInterfaceDT($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFInterfaceDT(rh, "Registration Handler")` |
 | ![Package](adf-elements/sw@dt/package.drawio.png)  | `ADFPackage($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFPackage(b, "Business")` (package has no inside elements, hence, the label is inside the main package box), `ADFPackage(b, "Business") { ADFModule(us, "User Service", 2) }` (package has an inside element, hence, the label is inside the package label box) |
 | ![Datatype](adf-elements/sw@dt/datatype.drawio.png)  | `ADFDatatype($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFDatatype(u, "User")`; ADFDatatype can take inner attributes, constructors and methods like the PlantUML class element |
 | ![Library](adf-elements/sw@dt/library.drawio.png)  | `ADFLibrary($id, $name, $shade = 1)`, `shade` as in `ADFSystem` | `ADFLibrary(ok, "okHTTP")` |

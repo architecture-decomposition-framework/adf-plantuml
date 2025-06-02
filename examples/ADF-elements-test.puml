@@ -19,7 +19,8 @@ ADFLayer(layer1, "Business Logic") {
 }
 ADFCluster(cluster1, "Microservices")
 ADFComponent(comp1, "User Service")
-ADFInterface(intf1, "REST API")
+ADFInterfaceRT(intf1, "REST API")
+ADFInterfaceDT(intf2, "DataHandler")
 ADFData(data1, "User Data") {
     name
     email
